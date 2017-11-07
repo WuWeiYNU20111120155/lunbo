@@ -27,7 +27,6 @@
 
     .lunbo {
         position: absolute;
-        width: 1600px;
         overflow: hidden;
     }
 
@@ -95,13 +94,13 @@
 <body>
     <div class='box'>
         <ul class='lunbo'>
-            <li><a href="#"><img src="https://picsum.photos/400/300?image=100"></a></li>
-            <li><a href="#"><img src="https://picsum.photos/400/300?image=101"></a></li>
-            <li><a href="#"><img src="https://picsum.photos/400/300?image=102"></a></li>
-            <li><a href="#"><img src="https://picsum.photos/400/300?image=103"></a></li>
+            <li><a href=""><img src="https://picsum.photos/400/300?image=100"></a></li>
+            <li><a href=""><img src="https://picsum.photos/400/300?image=101"></a></li>
+            <li><a href=""><img src="https://picsum.photos/400/300?image=102"></a></li>
+            <li><a href=""><img src="https://picsum.photos/400/300?image=103"></a></li>
         </ul>
-        <a class="next arrow" href="#">&gt</a>
-        <a class='pre arrow' href="#">&lt </a>
+        <a class="next arrow" href="">&gt</a>
+        <a class='pre arrow' href="">&lt </a>
         <ul class='bullet'>
             <li class='active'></li>
             <li></li>
@@ -125,28 +124,29 @@
     $lunbo.width((imgCount + 2) * imgWidth)
     $lunbo.css({ 'left': -imgWidth + 'px' })
     var curIndex = 0
-    $next.click(function() {
-        $(this).preventDefault()
+    $next.click(function(e) {
+        e.preventDefault()
         playNext(1)
+
+
     })
-    $pre.click(function() {
-        $(this).preventDefault()
+    $pre.click(function(e) {
+        e.preventDefault()
         playPre(1)
+
     })
     $bullets.click(function() {
-        $(this).preventDefault()
-         var index = $(this).index()
+        var index = $(this).index()
         if (index > curIndex) {
-            playNext(index-curIndex)
-        }
-        else if (index < curIndex) {
-            playPre(curIndex-index)
+            playNext(index - curIndex)
+        } else if (index < curIndex) {
+            playPre(curIndex - index)
         }
     })
 
     function playNext(inval) {
-        curIndex+=inval
-        $lunbo.css({ 'left': '-=' + inval*imgWidth + 'px' })
+        curIndex += inval
+        $lunbo.css({ 'left': '-=' + inval * imgWidth + 'px' })
         if (curIndex === imgCount) {
             curIndex = 0
             $lunbo.css({ 'left': -imgWidth + 'px' })
@@ -157,8 +157,8 @@
     }
 
     function playPre(inval) {
-        curIndex-=inval
-        $lunbo.css({ 'left': '+=' + inval*imgWidth + 'px' })
+        curIndex -= inval
+        $lunbo.css({ 'left': '+=' + inval * imgWidth + 'px' })
         if (curIndex < 0) {
             curIndex = imgCount - 1
             $lunbo.css({ 'left': -imgCount * imgWidth + 'px' })
@@ -174,4 +174,3 @@
 </body>
 
 </html>
-
