@@ -126,12 +126,15 @@
     $lunbo.css({ 'left': -imgWidth + 'px' })
     var curIndex = 0
     $next.click(function() {
+        $(this).preventDefault()
         playNext(1)
     })
     $pre.click(function() {
+        $(this).preventDefault()
         playPre(1)
     })
     $bullets.click(function() {
+        $(this).preventDefault()
          var index = $(this).index()
         if (index > curIndex) {
             playNext(index-curIndex)
@@ -171,3 +174,4 @@
 </body>
 
 </html>
+
